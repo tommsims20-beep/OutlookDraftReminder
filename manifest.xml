@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OfficeApp
+  xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+  xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides/1.0"
+  xsi:type="MailApp">
+
+  <!-- Replace with a real GUID you generate (e.g. via `uuidgen` or an online GUID generator) -->
+  <Id>4c2f9d3a-6b8e-4e7a-9f1d-2a7c1e5b9d10</Id>
+  <Version>1.0.0.0</Version>
+  <ProviderName>Your Name</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="Draft Reminder" />
+  <Description DefaultValue="Reminds you about unsent drafts sitting in your Drafts folder for over an hour." />
+  <IconUrl DefaultValue="https://REPLACE-WITH-YOUR-HOST/assets/icon-64.png" />
+  <HighResolutionIconUrl DefaultValue="https://REPLACE-WITH-YOUR-HOST/assets/icon-128.png" />
+  <SupportUrl DefaultValue="https://REPLACE-WITH-YOUR-HOST/" />
+
+  <AppDomains>
+    <AppDomain>https://REPLACE-WITH-YOUR-HOST</AppDomain>
+  </AppDomains>
+
+  <Hosts>
+    <Host Name="Mailbox" />
+  </Hosts>
+
+  <!-- ReadWriteMailbox is required for makeEwsRequestAsync to query the Drafts folder.
+       Note: production/AppSource listing requires Microsoft review for this permission level.
+       For sideloading / org-internal use this works without that review. -->
+  <Requirements>
+    <Sets>
+      <Set Name="Mailbox" MinVersion="1.5" />
+    </Sets>
+  </Requirements>
+
+  <FormSettings>
+    <Form xsi:type="ItemRead">
+      <DesktopSettings>
+        <SourceLocation DefaultValue="https://REPLACE-WITH-YOUR-HOST/taskpane.html" />
+      </DesktopSettings>
+    </Form>
+  </FormSettings>
+
+  <Permissions>ReadWriteMailbox</Permissions>
+
+  <Rule xsi:type="RuleCollection" Mode="Or">
+    <Rule xsi:type="ItemIs" ItemType="Message" FormType="Read" />
+  </Rule>
+
+  <DisableEntityHighlighting>false</DisableEntityHighlighting>
+
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides" xsi:type="VersionOverridesV1_0">
+    <Requirements>
+      <bt:Sets DefaultMinVersion="1.5">
+        <bt:Set Name="Mailbox" />
+      </bt:Sets>
+    </Requirements>
+
+    <Hosts>
+      <Host xsi:type="MailHost">
+
+        <!-- The persistent background runtime. lifetime="long" keeps commands.html's
+             JS context (and its setInterval) alive for as long as Outlook is running
+             in that session, not just while a UI surface is open. -->
+        <Runtimes>
+          <Runtime resid="BackgroundRuntime.Url" lifetime="long">
+            <Override type="javascript" resid="BackgroundRuntime.Script.Url" />
+          </Runtime>
+        </Runtimes>
+
+        <DesktopFormFactor>
+          <FunctionFile resid="Commands.Url" />
+
+          <ExtensionPoint xsi:type="MessageReadCommandSurface">
+            <OfficeTab id="TabDefault">
+              <Group id="DraftReminderGroup">
+                <Label resid="GroupLabel" />
+                <Icon>
+                  <bt:Image size="16" resid="Icon.16x16" />
+                  <bt:Image size="32" resid="Icon.32x32" />
+                  <bt:Image size="80" resid="Icon.80x80" />
+                </Icon>
+                <Control xsi:type="Button" id="TaskpaneButton">
+                  <Label resid="TaskpaneButton.Label" />
+                  <Supertip>
+                    <Title resid="TaskpaneButton.Label" />
+                    <Description resid="TaskpaneButton.Tooltip" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16x16" />
+                    <bt:Image size="32" resid="Icon.32x32" />
+                    <bt:Image size="80" resid="Icon.80x80" />
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <SourceLocation resid="Taskpane.Url" />
+                  </Action>
+                </Control>
+              </Group>
+            </OfficeTab>
+          </ExtensionPoint>
+
+          <!-- Ties the long-lifetime runtime to a real Outlook event so it actually
+               loads without the user opening the task pane first. OnNewMessageCompose
+               fires the first time you start composing/replying in a session — after
+               that the runtime and its hourly timer stay resident. -->
+          <ExtensionPoint xsi:type="LaunchEvent">
+            <LaunchEvents>
+              <LaunchEvent Type="OnNewMessageCompose" FunctionName="onComposeStart" />
+            </LaunchEvents>
+            <SourceLocation resid="BackgroundRuntime.Url" />
+          </ExtensionPoint>
+
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
+
+    <Resources>
+      <bt:Images>
+        <bt:Image id="Icon.16x16" DefaultValue="https://REPLACE-WITH-YOUR-HOST/assets/icon-16.png" />
+        <bt:Image id="Icon.32x32" DefaultValue="https://REPLACE-WITH-YOUR-HOST/assets/icon-32.png" />
+        <bt:Image id="Icon.80x80" DefaultValue="https://REPLACE-WITH-YOUR-HOST/assets/icon-80.png" />
+      </bt:Images>
+      <bt:Urls>
+        <bt:Url id="Commands.Url" DefaultValue="https://REPLACE-WITH-YOUR-HOST/commands.html" />
+        <bt:Url id="Taskpane.Url" DefaultValue="https://REPLACE-WITH-YOUR-HOST/taskpane.html" />
+        <bt:Url id="BackgroundRuntime.Url" DefaultValue="https://REPLACE-WITH-YOUR-HOST/commands.html" />
+        <bt:Url id="BackgroundRuntime.Script.Url" DefaultValue="https://REPLACE-WITH-YOUR-HOST/commands.js" />
+      </bt:Urls>
+      <bt:ShortStrings>
+        <bt:String id="GroupLabel" DefaultValue="Draft Reminder" />
+        <bt:String id="TaskpaneButton.Label" DefaultValue="Check Drafts" />
+      </bt:ShortStrings>
+      <bt:LongStrings>
+        <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Open the draft reminder panel and enable notifications." />
+      </bt:LongStrings>
+    </Resources>
+  </VersionOverrides>
+</OfficeApp>

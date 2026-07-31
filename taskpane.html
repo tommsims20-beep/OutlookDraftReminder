@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Draft Reminder</title>
+  <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      margin: 16px;
+      color: #242424;
+    }
+    h1 { font-size: 16px; margin-bottom: 4px; }
+    p { font-size: 13px; color: #555; }
+    button {
+      background: #2564cf;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 10px 14px;
+      font-size: 13px;
+      cursor: pointer;
+      margin-top: 8px;
+      width: 100%;
+    }
+    button:hover { background: #1f52a8; }
+    button:disabled { background: #ccc; cursor: default; }
+    #status {
+      margin-top: 14px;
+      font-size: 13px;
+      padding: 10px;
+      border-radius: 4px;
+      background: #f3f2f1;
+    }
+    #draftList { margin-top: 10px; font-size: 13px; }
+    #draftList li { margin-bottom: 4px; }
+  </style>
+</head>
+<body>
+  <h1>Draft Reminder</h1>
+  <p>Enable notifications once, then this stays running in the background
+     while Outlook is open and checks your Drafts folder every hour.</p>
+
+  <button id="enableBtn">Enable notifications</button>
+  <button id="checkNowBtn">Check drafts now</button>
+
+  <div id="status">Notifications: checking…</div>
+  <ul id="draftList"></ul>
+
+  <script src="taskpane.js"></script>
+</body>
+</html>
