@@ -13,12 +13,12 @@
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="Draft Reminder" />
   <Description DefaultValue="Reminds you about unsent drafts sitting in your Drafts folder for over an hour." />
-  <IconUrl DefaultValue="https://REPLACE-WITH-YOUR-HOST/assets/icon-64.png" />
+  <IconUrl DefaultValue="https://tommsims20-beep.github.io/OutlookDraftReminder/assets/icon-64.png" />
   <HighResolutionIconUrl DefaultValue="https://REPLACE-WITH-YOUR-HOST/assets/icon-128.png" />
   <SupportUrl DefaultValue="https://REPLACE-WITH-YOUR-HOST/" />
 
   <AppDomains>
-    <AppDomain>https://REPLACE-WITH-YOUR-HOST</AppDomain>
+    <AppDomain>https://tommsims20-beep.github.io/OutlookDraftReminder</AppDomain>
   </AppDomains>
 
   <Hosts>
@@ -37,7 +37,7 @@
   <FormSettings>
     <Form xsi:type="ItemRead">
       <DesktopSettings>
-        <SourceLocation DefaultValue="https://REPLACE-WITH-YOUR-HOST/taskpane.html" />
+        <SourceLocation DefaultValue="https://tommsims20-beep.github.io/OutlookDraftReminder/taskpane.html" />
       </DesktopSettings>
     </Form>
   </FormSettings>
@@ -117,15 +117,15 @@
 
     <Resources>
       <bt:Images>
-        <bt:Image id="Icon.16x16" DefaultValue="https://REPLACE-WITH-YOUR-HOST/assets/icon-16.png" />
-        <bt:Image id="Icon.32x32" DefaultValue="https://REPLACE-WITH-YOUR-HOST/assets/icon-32.png" />
-        <bt:Image id="Icon.80x80" DefaultValue="https://REPLACE-WITH-YOUR-HOST/assets/icon-80.png" />
+        <bt:Image id="Icon.16x16" DefaultValue="https://tommsims20-beep.github.io/OutlookDraftReminder/assets/icon-16.png" />
+        <bt:Image id="Icon.32x32" DefaultValue="https://tommsims20-beep.github.io/OutlookDraftReminder/assets/icon-32.png" />
+        <bt:Image id="Icon.80x80" DefaultValue="https://tommsims20-beep.github.io/OutlookDraftReminder/assets/icon-80.png" />
       </bt:Images>
       <bt:Urls>
-        <bt:Url id="Commands.Url" DefaultValue="https://REPLACE-WITH-YOUR-HOST/commands.html" />
-        <bt:Url id="Taskpane.Url" DefaultValue="https://REPLACE-WITH-YOUR-HOST/taskpane.html" />
-        <bt:Url id="BackgroundRuntime.Url" DefaultValue="https://REPLACE-WITH-YOUR-HOST/commands.html" />
-        <bt:Url id="BackgroundRuntime.Script.Url" DefaultValue="https://REPLACE-WITH-YOUR-HOST/commands.js" />
+        <bt:Url id="Commands.Url" DefaultValue="https://tommsims20-beep.github.io/OutlookDraftReminder/commands.html" />
+        <bt:Url id="Taskpane.Url" DefaultValue="https://tommsims20-beep.github.io/OutlookDraftReminder/taskpane.html" />
+        <bt:Url id="BackgroundRuntime.Url" DefaultValue="https://tommsims20-beep.github.io/OutlookDraftReminder/commands.html" />
+        <bt:Url id="BackgroundRuntime.Script.Url" DefaultValue="https://tommsims20-beep.github.io/OutlookDraftReminder/commands.js" />
       </bt:Urls>
       <bt:ShortStrings>
         <bt:String id="GroupLabel" DefaultValue="Draft Reminder" />
