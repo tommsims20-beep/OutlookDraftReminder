@@ -14,8 +14,8 @@
   <DisplayName DefaultValue="Draft Reminder" />
   <Description DefaultValue="Reminds you about unsent drafts sitting in your Drafts folder for over an hour." />
   <IconUrl DefaultValue="https://tommsims20-beep.github.io/OutlookDraftReminder/assets/icon-64.png" />
-  <HighResolutionIconUrl DefaultValue="https://REPLACE-WITH-YOUR-HOST/assets/icon-128.png" />
-  <SupportUrl DefaultValue="https://REPLACE-WITH-YOUR-HOST/" />
+  <HighResolutionIconUrl DefaultValue="https://tommsims20-beep.github.io/OutlookDraftReminder/assets/icon-128.png" />
+  <SupportUrl DefaultValue="https://tommsims20-beep.github.io/OutlookDraftReminder" />
 
   <AppDomains>
     <AppDomain>https://tommsims20-beep.github.io/OutlookDraftReminder</AppDomain>
